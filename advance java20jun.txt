@@ -1,0 +1,82 @@
+1. servlet config
+2. servlet context
+> sc is an interface in javax.servlet package.
+> sc  is imlemented by web container.
+> sc's object created at deployment time of application{server ke inside imploy}
+> sc is per web application.
+> servlet>>>config>>>sc
+
+
+................communication b\w servlet...............................
+
+servlet[by hyperlink]   s1<----------------> s2
+
+dynamic communication
+requestDispatcher
+1. RD is  an interface in javax.servlet package implemented by web container.
+2. rd is used to dispatch request from one servlet to another resource or include resource to servlet.
+3. there are to method of rd ,these are 
+>>forward[request ,responce]
+>>include[request ,responce]
+             
+           server
+s1 ------[  html
+           jsp
+
+
+                HelloWorld           sucess
+email ---------  email or password
+passward
+login
+
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+@webservlet ("/cetpa")
+public class HelloWorld extends HttpServlet{
+public void serlet(HttpServletRequest req,HttpServletResponse res,)throws servletException,IOException{
+	res.setContentType("text/html");
+	printWritter out=res.getWritter();
+	String e=req.getParameter("email");
+	String e=req.getParameter("pwd");
+	if(e.equals("cetpa@gmail.com") && p.equals("cetpa")){
+	RequestDispatcher rd=req.getRequestDispatcher("success");
+	rd.forward(req,res);
+	}
+	else{
+	     out.println("<p style='color:red'>incorrect dasta</p>");
+	     RequestDispatcher rd=req.getRequestDispatcher("index.html");
+	     rd.include(req,res);
+          }
+}
+
+
+
+
+send is url pattern
+payment gateway
+
+
+FORWORD SERVLET SERVET SEND REDIRECT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

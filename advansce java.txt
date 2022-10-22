@@ -1,0 +1,553 @@
+
+
+>> servlet technology[java doubly]
+>> JSP
+>> JDBC[JAVA DATABASE CONNETEVITY]
+>> struts
+>> hibernate
+
+ **servlet is a java program that run on server side.
+                       web 
+*  client
+*  server[^]
+> server computer
+> web server
+
+simple client server architecture .
+
+**servlet can take request from client & give response back  to the client .
+
+**servlet is used to creat dynamic web pages .
+*  static page [html]
+tomcat use are make a server
+domain name hosting[online system]
+
+multi purpose 
+import java.io.*;
+class s{
+psvn()
+printwritter out=new printwriter(System.out,true)
+out.println("hello");
+
+
+
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class HelloWorld extends HttpServlet {
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws IOException, ServletException //super class inbuild sane level
+    {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<h1>Hello World!</h1>");
+        
+    }
+} 
+
+14 jun
+
+create a website in servlet
+
+>tomcat
+>inside webapps
+>copy ROOT
+>paste in webapps
+>rename
+>web1
+
+web.xml
+deployment description
+1- web.xml contain information of servlet
+<servlet></servlet>    registration
+<servlet mapping><servlet-mapping>   mapping
+serveraddress localhost
+
+
+
+
+
+
+15jun
+
+
+tomcat=web server   clanguage  + web container , servlet container \java
+web server is has to handle http protocal
+web server delived only static contain to be client
+
+.......................types of web container.............
+1>  CATALINA[use for servlet    catlina handleed life cycle of servlet]
+2>  JASPER[jasper handled lifecycle of ( JSP )java server pages]
+   
+
+..................servlet heirarchy..............
+
+[servletapi.java]{all classes of jar file}
+
+servlet<inf>  -->   java*servlet.*[packages]
+generic servlet <as>  --> "
+http servlet <abs>
+my servlet
+
+
+life cycle methods of init,servlet,distroy
+methods of servlet these are doget,dopost,service[only for http protocol]
+
+
+
+
+http work of server 
+http are language to communicate
+server client
+**http is a languages b\w client and server by which they are communicate b\w each other
+**it is send data from client to server or server to client
+**there are 2 impo methods of http
+1>get
+2>post
+get method  --->doget()
+post   ------>  dopost()
+client se request get so call get method
+if client request to post so call post method
+  difference b\W get & post 
+
+get                                                        post
+
+get is default methods of http                             post is not default                          
+[address bar ,link,method ]                                      [form.method]
+
+
+
+src >new>cetpa>click
+mapping krege where cetpaclass pakages
+
+
+<html>
+<head>
+<>
+
+
+
+Example of Login Form in Servlet Tutorial
+Here, we are going to create the simple example to create the login form using servlet. We have used oracle10g as the database. There are 5 files required for this application.
+
+index.html
+FirstServlet.java
+LoginDao.java
+SecondServlet.java
+web.xml
+You must need to create a table userreg with name and pass fields. Moreover, it must have contained some data. The table should be as:
+
+create table userreg(name varchar2(40),pass varchar2(40));  
+index.html
+<form action="servlet1" method="post">  
+Name:<input type="text" name="username"/><br/><br/>  
+Password:<input type="password" name="userpass"/><br/><br/>  
+<input type="submit" value="login"/>  
+</form>  
+FirstServlet.java
+import java.io.IOException;  
+import java.io.PrintWriter;  
+  
+import javax.servlet.RequestDispatcher;  
+import javax.servlet.ServletException;  
+import javax.servlet.http.HttpServlet;  
+import javax.servlet.http.HttpServletRequest;  
+import javax.servlet.http.HttpServletResponse;  
+  
+  
+public class FirstServlet extends HttpServlet {  
+public void doPost(HttpServletRequest request, HttpServletResponse response)  
+        throws ServletException, IOException {  
+  
+    response.setContentType("text/html");  
+    PrintWriter out = response.getWriter();  
+          
+    String n=request.getParameter("username");  
+    String p=request.getParameter("userpass");  
+          
+    if(LoginDao.validate(n, p)){  
+        RequestDispatcher rd=request.getRequestDispatcher("servlet2");  
+        rd.forward(request,response);  
+    }  
+    else{  
+        out.print("Sorry username or password error");  
+        RequestDispatcher rd=request.getRequestDispatcher("index.html");  
+        rd.include(request,response);  
+    }  
+          
+    out.close();  
+    }  
+}  
+
+  LoginDao.java
+import java.sql.*;  
+  
+public class LoginDao {  
+public static boolean validate(String name,String pass){  
+boolean status=false;  
+try{  
+Class.forName("oracle.jdbc.driver.OracleDriver");  
+Connection con=DriverManager.getConnection(  
+"jdbc:oracle:thin:@localhost:1521:xe","system","oracle");  
+      
+PreparedStatement ps=con.prepareStatement(  
+"select * from userreg where name=? and pass=?");  
+ps.setString(1,name);  
+ps.setString(2,pass);  
+      
+ResultSet rs=ps.executeQuery();  
+status=rs.next();  
+          
+}catch(Exception e){System.out.println(e);}  
+return status;  
+}  
+}  
+WelcomeServlet.java
+import java.io.IOException;  
+import java.io.PrintWriter;  
+  
+import javax.servlet.ServletException;  
+import javax.servlet.http.HttpServlet;  
+import javax.servlet.http.HttpServletRequest;  
+import javax.servlet.http.HttpServletResponse;  
+  
+public class WelcomeServlet extends HttpServlet {  
+public void doPost(HttpServletRequest request, HttpServletResponse response)  
+    throws ServletException, IOException {  
+  
+    response.setContentType("text/html");  
+    PrintWriter out = response.getWriter();  
+          
+    String n=request.getParameter("username");  
+    out.print("Welcome "+n);  
+          
+    out.close();  
+    }  
+  
+}  
+
+
+
+
+
+
+
+
+
+
+Servlet API
+Servlet API
+Interfaces in javax.servlet package
+Classes in javax.servlet package
+Interfaces in javax.servlet.http package
+Classes in javax.servlet.http package
+The javax.servlet and javax.servlet.http packages represent interfaces and classes for servlet api.
+
+The javax.servlet package contains many interfaces and classes that are used by the servlet or web container. These are not specific to any protocol.
+
+The javax.servlet.http package contains interfaces and classes that are responsible for http requests only.
+
+Let's see what are the interfaces of javax.servlet package.
+
+Interfaces in javax.servlet package
+There are many interfaces in javax.servlet package. They are as follows:
+
+Servlet
+ServletRequest
+ServletResponse
+RequestDispatcher
+ServletConfig
+ServletContext
+SingleThreadModel
+Filter
+FilterConfig
+FilterChain
+ServletRequestListener
+ServletRequestAttributeListener
+ServletContextListener
+ServletContextAttributeListener
+
+ 
+Classes in javax.servlet package
+There are many classes in javax.servlet package. They are as follows:
+
+GenericServlet
+ServletInputStream
+ServletOutputStream
+ServletRequestWrapper
+ServletResponseWrapper
+ServletRequestEvent
+ServletContextEvent
+ServletRequestAttributeEvent
+ServletContextAttributeEvent
+ServletException
+UnavailableException
+Interfaces in javax.servlet.http package
+There are many interfaces in javax.servlet.http package. They are as follows:
+
+HttpServletRequest
+HttpServletResponse
+HttpSession
+HttpSessionListener
+HttpSessionAttributeListener
+HttpSessionBindingListener
+HttpSessionActivationListener
+HttpSessionContext (deprecated now)
+Classes in javax.servlet.http package
+There are many classes in javax.servlet.http package. They are as follows:
+
+HttpServlet
+Cookie
+HttpServletRequestWrapper
+HttpServletResponseWrapper
+HttpSessionEvent
+HttpSessionBindingEvent
+HttpUtils (deprecated now)
+
+
+
+
+
+Servlets | Servlet Tutorial
+java servlet tutorial
+Servlet technology is used to create a web application (resides at server side and generates a dynamic web page).
+
+Servlet technology is robust and scalable because of java language. Before Servlet, CGI (Common Gateway Interface) scripting language was common as a server-side programming language. However, there were many disadvantages to this technology. We have discussed these disadvantages below.
+
+There are many interfaces and classes in the Servlet API such as Servlet, GenericServlet, HttpServlet, ServletRequest, ServletResponse, etc.
+
+What is a Servlet?
+Servlet can be described in many ways, depending on the context.
+
+Servlet is a technology which is used to create a web application.
+Servlet is an API that provides many interfaces and classes including documentation.
+Servlet is an interface that must be implemented for creating any Servlet.
+Servlet is a class that extends the capabilities of the servers and responds to the incoming requests. It can respond to any requests.
+Servlet is a web component that is deployed on the server to create a dynamic web page.
+Servlet 
+
+  Do You Know?
+What is the web application and what is the difference between Get and Post request?
+What information is received by the web server if we request for a Servlet?
+How to run servlet in Eclipse, MyEclipse and Netbeans IDE?
+What are the ways for servlet collaboration and what is the difference between RequestDispatcher and sendRedirect() method?
+What is the difference between ServletConfig and ServletContext interface?
+How many ways can we maintain the state of a user? Which approach is mostly used in web development?
+How to count the total number of visitors and whole response time for a request using Filter?
+How to run servlet with annotation?
+How to create registration form using Servlet and Oracle database?
+How can we upload and download the file from the server?
+What is a web application?
+A web application is an application accessible from the web. A web application is composed of web components like Servlet, JSP, Filter, etc. and other elements such as HTML, CSS, and JavaScript. The web components typically execute in Web Server and respond to the HTTP request.
+
+CGI (Common Gateway Interface)
+CGI technology enables the web server to call an external program and pass HTTP request information to the external program to process the request. For each request, it starts a new process.
+
+CGI vs., Servlet
+Disadvantages of CGI
+There are many problems in CGI technology:
+
+If the number of clients increases, it takes more time for sending the response.
+For each request, it starts a process, and the web server is limited to start processes.
+It uses platform dependent language e.g. C, C++, perl.
+Advantages of Servlet
+Advantages of Servlet
+There are many advantages of Servlet over CGI. The web container creates threads for handling the multiple requests to the Servlet. Threads have many benefits over the Processes such as they share a common memory area, lightweight, cost of communication between the threads are low. The advantages of Servlet are as follows:
+
+Better performance: because it creates a thread for each request, not process.
+Portability: because it uses Java language.
+Robust: JVM manages Servlets, so we don't need to worry about the memory leak, garbage collection, etc.
+Secure: because it uses java language.
+Servlets Index
+Servlet Tutorial
+
+What is Servlet
+Web Terminology
+Web Terminology
+Website: Static Dynamic
+HTTP
+HTTP Requests
+Get vs Post
+Container
+Server: Web Application
+Content Type
+Servlet API
+Servlet Interface
+GenericServlet
+HttpServlet
+Servlet Life Cycle
+Servlet Example
+How servlet works?
+War File
+welcome-file-list
+Load on startup
+Servlet with IDE
+
+servlet in Eclipse
+servlet in Myeclipse
+servlet in Netbeans
+ServletRequest
+
+ServletRequest
+Servlet Collaboration
+
+RequestDispacher
+sendRedirect
+ServletConfig
+
+ServletConfig
+ServletContext
+
+ServletContext
+Attribute in Servlet
+
+Attribute in Servlet
+Servlet Advance
+
+Session Tracking
+
+Session Techniques
+1) Cookies in Servlet
+Cookies: Login & Logout
+2) Hidden Form Field
+3) URL Rewriting
+4) HttpSession
+Session: Login & Logout
+Event and Listener
+
+Event and Listener
+ServletContextEvent
+HttpSessionEvent
+ServletRequestEvent
+ServletContext AttributeEvent
+HttpSessionBindingEvent
+ServletRequestAttributeEvent
+Servlet Filter
+
+What is Filter
+Authentication Filter
+FilterConfig
+Useful examples
+Servlet CRUD
+
+CRUD Example
+Servlet Pagination
+
+Pagination Example
+Servlet Miscellaneous
+
+ServletInputStream
+ServletOutputStream
+Example to write image
+Annotation Servlet
+SingleThreadModel
+SSI
+Development
+
+Registration Example
+Fetching records
+Improving Performance
+Uploading file
+Downloading file
+Servlet Sending Email
+Write data to PDF
+Login Example
+Writing Image
+Servlet Basics Quiz
+
+Servlet Quiz
+Servlet Basics Quiz-1
+Servlet Basics Quiz-2
+Servlet Basics Quiz-3
+Servlet Basics Quiz-4
+Servlet Basics Quiz-5
+Servlet Advance Quiz
+
+Servlet Advance Quiz-1
+Servlet Advance Quiz-2
+Servlet Advance Quiz-3
+Servlet Advance Quiz-4
+Servlet Misc. Quiz
+
+Servlet Misc. Quiz-1
+Servlet Misc. Quiz-2
+Servlet Misc. Quiz-3
+Interview Questions
+
+Servlet Interview Questions
+
+
+Servlet API
+Servlet API
+Interfaces in javax.servlet package
+Classes in javax.servlet package
+Interfaces in javax.servlet.http package
+Classes in javax.servlet.http package
+The javax.servlet and javax.servlet.http packages represent interfaces and classes for servlet api.
+
+The javax.servlet package contains many interfaces and classes that are used by the servlet or web container. These are not specific to any protocol.
+
+The javax.servlet.http package contains interfaces and classes that are responsible for http requests only.
+
+Let's see what are the interfaces of javax.servlet package.
+
+Interfaces in javax.servlet package
+There are many interfaces in javax.servlet package. They are as follows:
+
+Servlet
+ServletRequest
+ServletResponse
+RequestDispatcher
+ServletConfig
+ServletContext
+SingleThreadModel
+Filter
+FilterConfig
+FilterChain
+ServletRequestListener
+ServletRequestAttributeListener
+ServletContextListener
+ServletContextAttributeListener
+
+ 
+Classes in javax.servlet package
+There are many classes in javax.servlet package. They are as follows:
+
+GenericServlet
+ServletInputStream
+ServletOutputStream
+ServletRequestWrapper
+ServletResponseWrapper
+ServletRequestEvent
+ServletContextEvent
+ServletRequestAttributeEvent
+ServletContextAttributeEvent
+ServletException
+UnavailableException
+Interfaces in javax.servlet.http package
+There are many interfaces in javax.servlet.http package. They are as follows:
+
+HttpServletRequest
+HttpServletResponse
+HttpSession
+HttpSessionListener
+HttpSessionAttributeListener
+HttpSessionBindingListener
+HttpSessionActivationListener
+HttpSessionContext (deprecated now)
+Classes in javax.servlet.http package
+There are many classes in javax.servlet.http package. They are as follows:
+
+HttpServlet
+Cookie
+HttpServletRequestWrapper
+HttpServletResponseWrapper
+HttpSessionEvent
+HttpSessionBindingEvent
+HttpUtils (deprecated now)
+
+
+

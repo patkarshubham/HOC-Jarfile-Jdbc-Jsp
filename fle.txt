@@ -1,0 +1,64 @@
+Tomcat has two software:
+1.web server(in Clanguage)
+2.web container,servlet container(in java)
+
+---work of main method done by WEB CONTAINER
+
+WEB SERVER
+1.it is used to handle http protocal
+2.it deliver only static content to tha client....
+
+TYPES OF WEB CONTAINER
+1.CATALINA(used to handle life cycle of servlet)
+2.JASPER(used to handle life cycle of JSP)
+
+---JAR FILE--servlet.api.jar
+
+SERVLET HIERARCHY
+1.servlet(interface)---package(javax.servlet.*;)
+2.generic servlet(abstract class)->implements servlet---package(same as 1)
+3.Http Servlet(abstract class)->extend(2)---package(javax.servlet.http)
+4. My Servlet->extends(3)
+
+LIFE CYCLE METHOD OF SERVLET
+1. public abstract void init(javax.servlet.ServletConfig) throws javax.servlet.ServletException;
+2. public abstract void service(javax.servlet.ServletRequest, javax.servlet.ServletResponse) throws javax.servlet.Servlet
+3. public abstract void destroy();
+
+IMPORTANT METHOD OF SERVLET
+1. protected void doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse) throws javax.servlet.ServletException, java.io.IOException;
+2.  protected void doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse) throws javax.servlet.ServletException, java.io.IOException;
+3. protected void service(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse) throws javax.servlet.ServletException, java.io.IOException;
+  public void service(javax.servlet.ServletRequest, javax.servlet.ServletResponse) throws javax.servlet.ServletException, java.io.IOException;
+
+1.---http is lang. bt. client n server by which they r communicate with each other.
+2.---http sends data from client to server or srver to client.
+3.---there r 2 imp. method of http:
+   A..  get(method for this [doGet])
+   B..  post(method for this[doPost])
+
+---http is browser based
+
+DIFFERENCE BTW GET N POST
+1.get is default method of http...(address bar,hyperlink,form[used in index]) 
+1.post is not dafault method of http...(form gives post)
+
+2.get is insecure
+2.post is secure
+
+3.get can send limited amt. of data to the server(max size is 2kb)
+3.post can send unlimited amt. of data to the server
+
+4.get can send only characters to the server(text)
+4.post can send any type of data to the server(characters n binary both)
+
+5.get is bookmarked
+5.post is not bookmarked
+
+6.cache memory wrk for get request
+6.cache memory does not work for post request
+
+CACHE MEMORY(temporary memory)
+
+SERVICE:accept anytype of request(super method of grt n post)
+

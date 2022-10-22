@@ -1,0 +1,62 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="cetpa">Cetpa</a>
+<form action="cetpa" method="post">
+<table>
+<caption>Registration Form</caption>
+<tr>
+<td>FirstName:</td>
+<td><input type="text" name="fname"></td>
+</tr>
+
+<tr>
+<td>LastName:</td>
+<td><input type="text" name="lname"></td>
+</tr>
+<tr>
+<td>Gender</td>
+<td><input type="radio" name="g" value="male" checked>Male
+    <input type="radio" name="g" value="female">FeMale
+    </td>
+    </tr>
+<tr>
+<td>Language</td>
+<td>
+<input type="checkbox" name="lang" value="c">C 
+<input type="checkbox" name="lang" value="c++">C++
+<input type="checkbox" name="lang" value="java">Java
+<input type="checkbox" name="lang" value="jee">Jee
+</td>
+</tr>
+<tr><td>Email</td>  
+<td><input type="email" name="email"></td> 
+</tr>
+<tr><td>Password</td>  
+<td><input type="password" name="pwd"></td> 
+</tr>
+<tr><td>City</td>  
+<td><select name="city" multiple="multiple">
+<option value="lko">Lucknow</option>
+<option value="ald">Allahabd</option>
+<option value="gkp">Gorakhpur</option>
+<option value="vns">Varanasi</option>
+</select></td> 
+</tr>
+<tr>
+<td>Message</td>
+<td><textarea rows="20" cols="20" name="msg"></textarea>
+</td>
+</tr>
+
+<tr>
+<td></td>
+<td><input type="submit" value="Registration"></td>
+</tr>
+</table>
+</form>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts  
+Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">  
+
+<struts>
+<package name="default" extends="struts-default">
+
+<action name="login" class="MyTest" method="insert">
+<result name="display">display.jsp</result>
+</action>
+<action name="display" class="MyTest" method="display">
+<result name="display">display.jsp</result>
+</action>
+<action name="delete" class="MyTest" method="delete">
+<result name="display">display.jsp</result>
+</action>
+<action name="edit" class="MyTest" method="edit">
+<result name="edit">edit.jsp</result>
+</action>
+</package>
+</struts>
